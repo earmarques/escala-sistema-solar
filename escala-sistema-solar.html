@@ -1,0 +1,483 @@
+<!--
+/************************************************
+*  Author: Éder A. R. Marques                   *
+*  Email:  earmarques@gmail.com                 *
+*  Local:  São José do Rio Preto/SP Brazil      *
+*  Date:   10/05/2019                           *
+************************************************/
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" >
+
+  <head>
+  <meta charset="UTF-8" />
+  <!--
+  IMPORTANTE |=> Para o bootstrap funcionar responsivo em dispositivos móveis.
+  Faz a largura do elemento do mesmo tamanho do dispositivo, e mantém o zoom normal (scale=1)
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description" content="Sistema Solar em Escala">
+  <meta name="keywords" content="Sistema Solar, Sistema Solar em Escala, Proporção dos Planetas,
+      Tamanho Relativo dos Planetas, Planetas, distância orbital, orbita dos planetas" />
+  <meta name="author" content="Eder Marques" />
+
+  <title>Sistema Solar em Escala</title>
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/base.css" />
+  <link rel="stylesheet" type="text/css" href="css/componentes.css" />
+
+  </head>
+
+
+<body onload="init()">
+  <div class="container">
+    <div class="row">
+
+      <!-- Cabecalho  -------------------------------------------------------------------------------------------- -->
+
+      <header class="cabecalho col-12 " >
+        <h1 class="cabecalho__titulo ">Sistema Solar em Escala</h1>
+        <p id="cabecalho__nome_planeta" class="cabecalho__nome_planeta branco" >&nbsp;</p>
+        <p class="cabecalho__imagem_planetas">
+          <img id="cabecalho__imagem_planetas" class="img-fluid" src="images/solarsys_scale.jpg"
+            alt="Foto dos planetas em escala relativa." usemap="#mapeamento-planetario" ></img>
+        </p>
+        <map name="mapeamento-planetario">
+          <area shape="rect" coords="0,0,30,238" alt="Sol" href="images/solarsys_scaleBig.jpg" target="_blank"
+              onmouseover="escreverNomePlanetaCabecalho(ASTROS.SOL)" onmouseout="limparNomePlanetaCabecalho()">
+          <area shape="circle" coords="66,120,4" alt="Mercúrio" href="images/solarsys_scaleBig.jpg" target="_blank"
+              onmouseover="escreverNomePlanetaCabecalho(ASTROS.MERCURIO)" onmouseout="limparNomePlanetaCabecalho()">
+          <area shape="circle" coords="97,120,8" alt="Vênus" href="images/solarsys_scaleBig.jpg" target="_blank"
+              onmouseover="escreverNomePlanetaCabecalho(ASTROS.VENUS)" onmouseout="limparNomePlanetaCabecalho()">
+          <area shape="circle" coords="132,120,8" alt="Terra" href="images/solarsys_scaleBig.jpg" target="_blank"
+              onmouseover="escreverNomePlanetaCabecalho(ASTROS.TERRA)" onmouseout="limparNomePlanetaCabecalho()">
+          <area shape="circle" coords="166,120,4" alt="Marte" href="images/solarsys_scaleBig.jpg" target="_blank"
+              onmouseover="escreverNomePlanetaCabecalho(ASTROS.MARTE)" onmouseout="limparNomePlanetaCabecalho()">
+          <area shape="circle" coords="274,120,76" alt="Júpiter" href="images/solarsys_scaleBig.jpg" target="_blank"
+              onmouseover="escreverNomePlanetaCabecalho(ASTROS.JUPITER)" onmouseout="limparNomePlanetaCabecalho()">
+          <area shape="circle" coords="445,120,62" alt="Saturno" href="images/solarsys_scaleBig.jpg" target="_blank"
+              onmouseover="escreverNomePlanetaCabecalho(ASTROS.SATURNO)" onmouseout="limparNomePlanetaCabecalho()">
+          <area shape="circle" coords="568,120,27" alt="Urano" href="images/solarsys_scaleBig.jpg" target="_blank"
+              onmouseover="escreverNomePlanetaCabecalho(ASTROS.URANO)" onmouseout="limparNomePlanetaCabecalho()">
+          <area shape="circle" coords="650,120,26" alt="Netuno" href="images/solarsys_scaleBig.jpg" target="_blank"
+              onmouseover="escreverNomePlanetaCabecalho(ASTROS.NETUNO)" onmouseout="limparNomePlanetaCabecalho()">
+          <area shape="circle" coords="704,120,2" alt="Plutão" href="images/solarsys_scaleBig.jpg" target="_blank"
+              onmouseover="escreverNomePlanetaCabecalho(ASTROS.PLUTAO)" onmouseout="limparNomePlanetaCabecalho()">
+        </map>
+        <p class="cabecalho__fonte-dados text-left col-12 offset-lg-1 offset-xl-2"><em>Ilustação:
+          <a href="https://solarsystem.nasa.gov/solar-system/our-solar-system/galleries"
+            target="_blank" title="visited in 10/06/2019">NASA</a></em>
+        </p>
+      </header>
+    </div>
+  </div>
+
+  <div class="container error_output" id="error_output" title="Duplo clique para fechar." >DEU PAU!!! </div>
+
+  <div class="container ">
+    <div class="row justify-content-center">
+
+      <!-- Dados  ------------------------------------------------------------------------------------------------ -->
+
+      <div class=" col-10 col-sm-8 col-md-5 col-lg-5 col-xl-4 dados">
+
+        <div class="row">
+          <p class="dados__sol col-12">Diâmetro Solar = 1,39x10<sup>6</sup> Km</p>
+        </div>
+
+        <div class="row" >
+          <div class="table-responsive">
+            <table class="table table-bordered dados__tabela dados__tabela--table-striped dados__tabela--table-hover"
+                id="dados__tabela" >
+              <thead>
+                <tr>
+                  <th>Astro</th>
+                  <th>Diâmetro (km)</th>
+                  <th>Distância do Sol (10<sup>6</sup> km)</th>
+                <tr>
+              </thead>
+
+              <tbody>
+                <tr id="mercurio">
+                  <td>Mercúrio</td>
+                  <td>4.879</td>
+                  <td>57,9</td>
+                </tr>
+                <tr id="venus">
+                  <td>Vênus</td>
+                  <td>12.104</td>
+                  <td>108,2</td>
+                </tr>
+                <tr id="terra">
+                  <td>Terra</td>
+                  <td>12.756</td>
+                  <td>149,6</td>
+                </tr>
+                <tr id="lua">
+                  <td>Lua</td>
+                  <td>3.475</td>
+                  <td>0,384</td>
+                </tr>
+                <tr id="marte">
+                  <td>Marte</td>
+                  <td>6.792</td>
+                  <td>227,9</td>
+                </tr>
+                <tr id="jupiter">
+                  <td>Júpiter</td>
+                  <td>142.984</td>
+                  <td>778,6</td>
+                </tr>
+                <tr id="saturno">
+                  <td>Saturno</td>
+                  <td>120.536</td>
+                  <td>1.433,5</td>
+                </tr>
+                <tr id="urano">
+                  <td>Urano</td>
+                  <td>51.118</td>
+                  <td>2.872,5</td>
+                </tr>
+                <tr id="netuno">
+                  <td>Netuno</td>
+                  <td>49.528</td>
+                  <td>4.495,1</td>
+                </tr>
+                <tr id="plutao">
+                  <td>*Plutão</td>
+                  <td>2.390</td>
+                  <td>5.870,0</td>
+                </tr>
+              </tbody>
+
+              <tfoot class="dados__tabela_rodape" >
+                <tr>
+                  <td colspan=3>Dados extraidos da <a
+                    href="http://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+                    target="_blank">NASA</a> em 06/outubro/2019.
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan=3>(*) Plutão não é mais considerado planeta,
+                    entrou para a categoria de planeta-anão.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <div class="row">
+            <footer class="dados__autor col-12">
+              Autor: <a rel="author" href="" onclick="alert('Éder Marques\nearmarques@gmail.com\n(17) 9 8149 2059');">
+                  Prof. Éder Marques</a>
+            </footer>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Calculos -------------------------------------------------------------------------------------------- -->
+
+      <div class=" col-11 col-sm-10 col-md-7 col-lg-6 col-xl-5 calculos">
+
+        <div class="row calculo-cabecario">
+          <span class="calculo-cabecario__rotulo-planeta-selecionado"
+              id="seletor-calculo__rotulo-planeta-selecionado" >Selecione um planeta da tabela. </span>
+          <span class="mr-auto calculo-cabecario__planeta-selecionado"
+              id="seletor-calculo__planeta-selecionado">&nbsp;</span>
+          <span class="col-auto calculo-cabecario__ajuda">
+            <a href="alert('Criar uma página de ME AJUDDAAAA!!!!'); return false;">Ajuda?</a>
+          </span>
+        </div>
+        <div class="row seletor-calculo">
+          <div class="col-sm-12">
+            <fieldset class="seletor-calculo__moldura">
+                <legend class="seletor-calculo__moldura-legenda">
+                  &nbsp; Escolha o cálculo que deseja realizar &nbsp;
+                </legend>
+
+                <!-- Tipo de Calculo de Proporções  ---------------------------------------------------- -->
+
+                <div class="tipo-calculo">
+                <!-- Opcoes de Tipo de Cálculo em Abas  -->
+                  <ul class="tipo-calculo__opcoes" id="tipo-calculo__opcoes">
+                    <li class="tipo-calculo__aba tipo-calculo__aba--diametro-planeta"
+                      id="tipo-calculo__diametro-planeta"
+                      onclick="processarSelecaoAbaCalculo(event)">Diâmetro do Planeta</li>
+                    <li class="tipo-calculo__aba tipo-calculo__aba--distancia-planeta"
+                      id="tipo-calculo__distancia-planeta"
+                      onclick="processarSelecaoAbaCalculo(event)">Distância do Planeta ao Sol</li>
+                  </ul>
+                </div>
+
+                <!-- Diametro ------------------------------------------------------------------------ -->
+
+                <div class="diametro" id="diametro" >
+                  <div class="diametro__conversao" >
+                    Diâmetro Sol: 1.390.000 <span class="sublinhado_branco">km</span> =
+                    1.390.000.000 <span class="branco sublinhado_branco">m</span> =
+                    1,39x10<sup>9</sup> <span class="branco">m</span>
+                  </div>
+                  <div class="diametro__conversao">
+                    Diâmetro <span id="diametros__planeta-nome">nome</span>:
+                    <span id="diametro__planeta-valor-Km">valor em</span>
+                    <span class="branco sublinhado_branco">km</span>
+                     =
+                    <span id="diametro__planeta-valor-m">valor em</span>
+                    <span class="branco sublinhado_branco">m</span> =
+                    <span class="branco" id="diametro__planeta-valor-notacao-cientifica">valor em nc</span>
+                    <span class="branco">m</span>
+                  </div>
+                </div>
+
+                <!-- Base do Padrão de Referência para o Cálculo da Distância ------------------------ -->
+
+                <div class="base" id="base" >
+                  <p class="base__rotulo">Base de referência para o cálculo:</p>
+                  <ul class="base__opcoes" >
+                    <li>
+                      <input type="radio" class="base__radio" id="base__diametro-sol"
+                          name="base__radio" value="diametro-sol" autocomplete="off"
+                          onclick="processarSelecaoBaseReferencia(event)">
+                      <label for="base__diametro-sol" class="base__radio-label"
+                          id="base__diametro-sol-label" >Diâmetro do Sol</label>
+                    </li>
+                    <li>
+                      <input type="radio" class="base__radio" id="base__distancia-terra-sol"
+                          name="base__radio" value="distancia-terra-sol" autocomplete="off"
+                          onclick="processarSelecaoBaseReferencia(event)">
+                      <label for="base__distancia-terra-sol" class="base__radio-label"
+                          id="base__distancia-terra-sol-label">Distância da Terra ao Sol</label>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Distancia  ------------------------------------------------------------------------ -->
+
+                <div class="distancia" id="distancia" >
+                  <div class="distancia__conversao" >
+                    <span id="distancia__referencia-rotulo" >Diâmetro Sol:</span>
+                    <span id="distancia__referencia-valor-km" >1.390.000</span>
+                    <span class="sublinhado_branco">km</span> =
+                    <span id="distancia__referencia-valor-m" >1.390.000.000</span>
+                    <span class="branco sublinhado_branco">m</span> =
+                    <span id="distancia__referencia-valor-notacao-cientifica" >1,39x10<sup>9</sup></span>
+                    <span class="branco">m</span>
+                  </div>
+                  <div class="distancia__conversao">
+                    <span id="distancia__planeta-rotulo">rotulo</span>
+                    <span id="distancia__planeta-nome">nome</span>:
+                    <span id="distancia__planeta-valor-Km">valor em </span>
+                    <span class="branco sublinhado_branco">km</span> =
+                    <span id="distancia__planeta-valor-m">valor em </span>
+                    <span class="branco sublinhado_branco">m</span> =
+                    <span class="branco" id="distancia__planeta-valor-notacao-cientifica">valor em nc</span>
+                    <span class="branco">m</span>
+                  </div>
+                </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <!-- Regra de Três  ------------------------------------------------------------------------------------ -->
+
+        <div class="row regra3" id="regra3">
+          <div class="col-sm-12">
+            <fieldset class="regra3__moldura">
+                <legend class="regra3__moldura-legenda">&nbsp; Regra de 3 &nbsp;</legend>
+
+                <!--  Parágrafos  -->
+                <div class="container regra3__paragrafos">
+                  <!-- p0 -->
+                  <div class="row  col-12 col-sm-8 col-md-8 col-lg-6 col-xl-7 regra3__p " >
+                    <span class="col-auto default sem_padding" id="regra3__p0--0" >Diâmetro Sol</span>
+                    <div class="col regra3__risco "> &nbsp;</div>
+                    <span class="col-auto mr-auto sem_padding">
+                      <!-- <select id="sel" onchange="update()"> -->
+                      <select class="regra3__escala" id="regra3__p0--1">
+                        <option value="1"selected="selected">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                      </select>
+                      <span class="default"  id="regra3__p0--2">m</span>
+                    </span>
+                  </div>
+                  <!-- p1 -->
+                  <div class="row col-12 col-sm-8 col-md-8 col-lg-6 col-xl-7 regra3__p " >
+                    <span class="col-auto default sem_padding branco" id="regra3__p1--0"></span>
+                    <div class="col regra3__risco"></div>
+                    <span class="col-auto mr-auto default sem_padding regra3__x regra3--espacar"                            id="regra3__p1--1"></span>
+                    <span class="default" id="regra3__p1--2"></span>
+                  </div>
+
+                  <div class="regra3__espacador-vertical" ></div>
+
+                  <!-- p2 -->
+                  <div class="row col-12 col-sm-8 col-md-8 col-lg-6 col-xl-7 regra3__p " >
+                    <span class="col-auto sem_padding regra3--super" id="regra3__p2--0" ></span>
+                    <span class="default" id="regra3__p2--1"></span>
+                    <div class="col regra3__risco"></div>
+                    <span class="regra3--super regra3--espacar" id="regra3__p2--2" ></span>
+                    <span class="default" id="regra3__p2--3"></span>
+                  </div>
+                  <!-- p3 -->
+                  <div class="row col-12 col-sm-8 col-md-8 col-lg-6 col-xl-7 regra3__p " >
+                    <span class="col-auto  sem_padding branco regra3--super" id="regra3__p3--0" ></span>
+                    <span class="default" id="regra3__p3--1"></span>
+                    <div class="col regra3__risco"></div>
+                    <span class=" regra3__x regra3--espacar"  id="regra3__p3--2"></span>
+                    <span class="default" id="regra3__p3--3"></span>
+                  </div>
+
+                  <div class="regra3__espacador-vertical" ></div>
+
+                  <!-- p4 -->
+                  <div class="row  col-12 col-sm-8 col-md-8 col-lg-7 col-xl-7 regra3__p " >
+                    <span class=" sem_padding regra3--super" id="regra3__p4--0" ></span>
+                    <span class="default sem_padding regra3__x regra3--espacar" id="regra3__p4--1"></span>
+                    <span class=" default " id="regra3__p4--2"></span>
+                    <span class=" branco regra3--super"  id="regra3__p4--3" ></span>
+                    <span class=" " id="regra3__p4--4"></span>
+                    <span class="mr-auto sem_padding " id="regra3__p4--5"></span>
+                  </div>
+                  <!-- p5 -->
+                  <div class="row  col-12 col-sm-8 col-md-8 col-lg-6 col-xl-7 regra3__p " >
+                    <span class="col-auto sem_padding regra3--super" id="regra3__p5--0" ></span>
+                    <span class="col-auto default sem_padding regra3__x regra3--espacar" id="regra3__p5--1"></span>
+                    <span class="default" id="regra3__p5--2"></span>
+                    <span class=" mr-auto default branco regra3--super" id="regra3__p5--3"></span>
+                  </div>
+
+                  <div class="regra3__espacador-vertical" ></div>
+
+                  <!-- p6 - Numerador -->
+                  <div class="row col-12 col-sm-8 col-md-8 col-lg-6 col-xl-7 regra3__p " >
+                    <span class="default branco regra3__numerador "
+                        id="regra3__p6--0"></span>
+                  </div>
+                  <!-- p7 - Traço fração -->
+                  <div class="row  col-12 col-sm-8 col-md-8 col-lg-6 col-xl-7 regra3__p " >
+                    <span class="default regra3__x regra3--espacar regra3__traco" id="regra3__p7--0" ></span>
+                    <span class="default sem_padding"    id="regra3__p7--1"></span>
+                    <span class=" sem_padding regra3__divisor" id="regra3__p7--2"></span>
+                  </div>
+                  <!-- p8 - Denominador  -->
+                  <div class="row  col-12 col-sm-8 col-md-8 col-lg-6 col-xl-7 regra3__p " >
+                    <span class="regra3__denominador" id="regra3__p8--0" ></span>
+                  </div>
+
+                  <div class="regra3__espacador-vertical" ></div>
+
+                  <!-- p9 -->
+                  <div class="row  col-12  regra3__p " >
+                    <span class="col-auto default regra3__x regra3--espacar" id="regra3__p9--0" ></span>
+                    <span class="col-auto default sem_padding"        id="regra3__p9--1"></span>
+                    <span class="col-auto sem_padding branco"  id="regra3__p9--2"></span>
+                    <span class="col-auto sem_padding"         id="regra3__p9--3"></span>
+                    <span class="col-auto sem_padding branco regra3--super" id="regra3__p9--4"></span>
+                    <span class="col-auto sem_padding"       id="regra3__p9--5"></span>
+                    <span class="col-auto default sem_padding regra3--super" id="regra3__p9--6"></span>
+                    <span class="col-auto default sem_padding" id="regra3__p9--7"></span>
+                    <span class="col-auto sem_padding" id="regra3__p9--8"></span>
+                    <span class="col-auto sem_padding" id="regra3__p9--9"></span>
+                    <span class="col-auto sem_padding branco regra3--super" id="regra3__p9--10"></span>
+                    <span class="col-auto sem_padding regra3--super" id="regra3__p9--11"></span>
+                    <span class="col-auto sem_padding regra3--super" id="regra3__p9--12"></span>
+                    <span class="col-auto sem_padding "      id="regra3__p9--13"></span>
+                  </div>
+                  <!-- p10 -->
+                  <div class="row  col-12 regra3__p " >
+                    <span class="regra3__x regra3--espacar default" id="regra3__p10--0"></span>
+                    <span class="default" id="regra3__p10--1"></span>
+                    <span class="" id="regra3__p10--2" ></span>
+                    <span class="" id="regra3__p10--3"></span>
+                    <span class="default branco iluminado" id="regra3__p10--4"></span>
+                    <span class="default font_16" id="regra3__p10--5"></span>
+                  </div>
+                  <!-- p11 -->
+                  <div class="row  col-12 regra3__p " >
+                    <span class="regra3__x regra3--espacar default" id="regra3__p11--0"></span>
+                    <span class="default" id="regra3__p11--1"></span>
+                    <span class="col-auto sem_padding branco iluminado" id="regra3__p11--2" ></span>
+                    <span class="default regra3--espacar branco " id="regra3__p11--3"></span>
+                  </div>
+
+                  <!-- p12 -->
+                  <div class="row  col-12 regra3__p--portanto " >
+                    <span class="default" id="regra3__p12--0"></span>
+                  </div>
+
+                  <!-- p13 -->
+                  <div class="row  col-12 regra3__p " >
+                    <span class="col-auto default sem_padding  regra3__x regra3--espacar"     id="regra3__p13--0" ></span>
+                    <span class="col-auto default sem_padding"            id="regra3__p13--1"></span>
+                    <span class="col-auto default sem_padding branco iluminado" id="regra3__p13--2"></span>
+                    <span class="col-auto default sem_padding"            id="regra3__p13--3"></span>
+                    <span class="col-auto default sem_padding"            id="regra3__p13--4"></span>
+                    <span class="col-auto default sem_padding branco iluminado" id="regra3__p13--5"></span>
+                    <span class="col-auto default sem_padding"              id="regra3__p13--6"></span>
+                  </div>
+                  <!-- p14 -->
+                  <div class="row  col-12 regra3__p " >
+                    <span class="default regra3__ou" id="regra3__p14--0"></span>
+                  </div>
+
+                  <!-- p15 -->
+                  <div class="row  col-12 regra3__p " >
+                    <span class="col-auto default sem_padding  regra3__x regra3--espacar" id="regra3__p15--0" ></span>
+                    <span class="col-auto default sem_padding"        id="regra3__p15--1"></span>
+                    <span class="col-auto default sem_padding branco"     id="regra3__p15--2"></span>
+                    <span class="col-auto default sem_padding"        id="regra3__p15--3"></span>
+                    <span class="col-auto default sem_padding"        id="regra3__p15--4"></span>
+                    <span class="col-auto default sem_padding branco"     id="regra3__p15--5"></span>
+                    <span class="col-auto default sem_padding"          id="regra3__p15--6"></span>
+                  </div>
+
+                  <!-- p16 -->
+                  <div class="row  col-12 regra3__p " >
+                    <span class="default regra3__ou" id="regra3__p16--0"></span>
+                  </div>
+
+                  <!-- p17 -->
+                  <div class="row  col-12 regra3__p " >
+                    <span class="col-auto default sem_padding  regra3__x regra3--espacar" id="regra3__p17--0" ></span>
+                    <span class="col-auto default sem_padding"        id="regra3__p17--1"></span>
+                    <span class="col-auto default sem_padding branco"     id="regra3__p17--2"></span>
+                    <span class="col-auto default sem_padding"        id="regra3__p17--3"></span>
+                    <span class="col-auto default sem_padding"        id="regra3__p17--4"></span>
+                    <span class="col-auto default sem_padding branco"     id="regra3__p17--5"></span>
+                    <span class="col-auto default sem_padding"          id="regra3__p17--6"></span>
+                  </div>
+
+                  <div></div>
+                </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+
+
+  <!-- JavaScript - deve-se manter a ordem -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/sistema-solar.js"></script>
+
+
+</body>
+</html>

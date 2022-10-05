@@ -1,0 +1,467 @@
+
+/************************************************
+*  Author: Éder A. R. Marques                   *
+*  Email:  earmarques@gmail.com                 *
+*  Local:  São José do Rio Preto/SP Brazil      *
+*  Date:   10/05/2019                           *
+************************************************/
+
+/**
+ *   Esta ESTILIZAÇÃO está concebida na metodologia do BEM:
+ *
+ *   B - Bloco
+ *   E - Elemento
+ *   M - Modificador
+ *
+ *   Há conjuntos de elementos associados que interagem entre si com a
+ * finalidade de realizar tarefas como um fim em si.
+ *   Menus, abas, grupo de botões, são exemplos de elementos
+ * que trabalham em conjunto.
+ *   A esse conjunto denominamos de BLOCK.
+ *   Os elementos de um menu, p. ex., disparadores de ações, são elementos
+ * do BLOCK menu e os botões são os ELEMENT's.
+ *
+ *   Cada block é independente e se ajusta responsivamente por serem todos os
+ * seus elementos internos com dimensões relativas ao seu container: block.
+ *
+ *   O modifier é um tipo de classe com alguma cor de fundo, peso de fonte,
+ * algum destaque, e essa classe tem de ser colocada no fim da lista
+ * de declaração de classes do elemento, para ser lida por último e fazer
+ * a sobrescrita.
+ *
+ *   Todo bloco é ligado aos seus elementos por '__' - BLOCK__ELEMENT
+ *
+ *   Todo modificador é um alterador do default, ligados por '--' - BLOCK__ELEMENT--MODIFIER.
+ *
+ *   Separação de palavras semânticas para variáveis e objetos é por hífen '-' .
+ *
+ *   Fonte: https://en.bem.info/methodology/
+ */
+
+
+
+/*--------------------------*\
+          CABECALHO
+/*--------------------------*/
+
+.cabecalho {
+	margin-top:5.0rem;
+	text-align: center;
+	font-size: 1rem;
+}
+
+
+.cabecalho__titulo {
+	font-size: 3.5em;
+	/* CUIDADO!! -> quando for borda, padding our margin, o que não for fonte,
+	refere-se ao tamanho da fonte do prórprio elemento, no caso 3.5em = 35px; */
+	margin-bottom: 0.6em; 	/* 0.6*35px = 21px */
+}
+
+.cabecalho__nome_planeta {
+	font-size: 1.6em;
+}
+
+.cabecalho__imagem_planetas {
+	margin: 0;
+}
+
+.cabecalho__fonte-dados {
+	font-size: 1.3em;
+}
+
+
+/*--------------------------*\
+            DADOS
+\*--------------------------*/
+
+.dados {
+	background-color: black;
+	font-size: 1rem;
+
+}
+
+
+.dados__sol {
+	font-size: 1.4em;
+	padding-left: 0.5rem;
+	margin-top: 3.0rem;
+	margin-bottom: 0.2rem;
+}
+
+.dados__tabela {
+	font-size: 1.1em;
+	color: inherit;
+	text-align: center;
+}
+.dados__tabela th {
+	font-weight: bold;
+}
+.dados__tabela tr td:nth-child(2) {
+	text-align: right;
+	padding-right: 10%;
+}
+.dados__tabela tr td:nth-child(3) {
+	text-align: right;
+	padding-right: 20%;
+}
+.dados__tabela--table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(35, 35, 35, 1.0);
+}
+.dados__tabela--table-hover tbody tr:hover {
+  cursor:pointer;
+  color: white;
+  background-color: midnightblue;
+  font-weight: bold;
+}
+
+.dados__tabela_rodape  {
+	line-height: 1.3rem;
+	text-align: left;
+	border: 1px solid white;
+}
+
+.dados__tabela_rodape td {
+	padding: 2px;
+	border: none;
+}
+
+.dados__autor {
+	font-size: 1.1em;
+	font-style: italic;
+}
+
+
+/*----------------------------------*\
+        CALCULOS DE PROPORCOES
+\*----------------------------------*/
+
+.calculos {
+	background-color: #000;
+	font-size: 1.0rem;
+	margin-top:0.5rem;
+	padding-left: 1.0rem;
+	padding-right: 0.5rem;
+}
+
+
+/*--------------------------------*\
+        CABECARIO DO CALCULO
+\*--------------------------------*/
+
+.calculo-cabecario {
+	font-size: 1.0rem;
+	margin: 0;
+}
+
+.calculo-cabecario__rotulo-planeta-selecionado {
+	padding-left:0.5em;
+	font-style:italic;
+	font-size:1.4em;
+}
+
+.calculo-cabecario__planeta-selecionado {
+	font-size:1.4em;
+	font-weight:bold;
+	color:white;
+}
+
+.calculo-cabecario__ajuda {
+	margin-right:0;
+	font-size: 1.4em;
+}
+
+
+/*--------------------------------*\
+        SELETOR DE CALCULO
+\*--------------------------------*/
+
+
+.seletor-calculo {
+	display: none;
+	font-size:1.0rem;
+	padding-top:1.7rem;
+}
+
+
+.seletor-calculo__moldura {
+	font-size:1.4em;
+
+	/* Resgatando default do navegador que o bootstrap zera
+	fonte|=> https://www.w3schools.com/tags/tag_fieldset.asp */
+	display: block;
+	border: 2px groove white;
+	margin:0;
+	padding: 0 0.5rem 0.5rem;
+
+	/* default do navegador
+	margin-left: 2px;
+	margin-right: 2px;
+
+	padding-top: 0.35em; /
+	padding-bottom: 0.625em;
+	padding-left: 0.75em;
+	padding-right: 0.75em;
+	*/
+}
+
+.seletor-calculo__moldura-legenda {
+	font-size:inherit;
+	/* bootstrap põe pra 100% - a linha da moldura não fica perto da legenda */
+	width: auto;
+}
+
+
+/*--------------------------*\
+        TIPO DE CÁLCULO
+\*--------------------------*/
+
+.tipo-calculo {
+	font-size:1rem;
+}
+
+
+.tipo-calculo__opcoes {
+	font-size:1.2em;
+	margin: 0;
+	/* Com essa pequena margem negativa, eu faço os blocos "diametro" e "distancia"
+	entrarem por baixo das abas, escondendo a parte da borda dos blocos que estão
+	sob a aba. Dando assim, um efeito de fundo contínuo, emendando aba e bloco. */
+	margin-bottom: -1px;
+	padding: 0;
+	list-style-type:none;
+	overflow:hidden;
+}
+
+.tipo-calculo__aba {
+	float:left;
+	padding: 0.5rem 1.0rem 0.3rem;
+	margin-right: 2px;
+	border: 1px solid maroon;
+	border-bottom:none;
+	border-top-left-radius:1em;
+	border-top-right-radius:1em;
+	text-align: center;
+}
+.tipo-calculo__aba:last-child {
+	margin-right: 0;
+}
+.tipo-calculo__aba:hover {
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	background-color: #330000;
+}
+
+.tipo-calculo__aba--diametro-planeta {
+	width: 16.8rem;
+}
+.tipo-calculo__aba--distancia-planeta {
+	width: 21.1rem;
+}
+
+
+/*----------------------*\
+        DIAMETRO
+\*----------------------*/
+
+.diametro {
+	display:none;
+	font-size: 1.1rem;
+	padding: 0.5rem;
+	padding-right:0;
+	border: 1px solid maroon;
+	background-color: #330000;
+}
+
+
+.diametro__conversao {
+	padding: 0.5rem 0;
+}
+.diametro__conversao:last-child {
+	padding-bottom: 0;
+}
+
+
+/*--------------------------*\
+        BASE REFERENCIA
+\*--------------------------*/
+
+.base {
+	display:none;
+	font-size:1.0rem;
+	padding: 0.5rem;
+	border: 1px solid maroon;
+	background-color: #330000;
+
+}
+
+
+.base__opcoes {
+	font-size:1.1em;
+	margin: 0;
+	padding: 0;
+	list-style-type:none;
+	overflow:hidden;
+}
+
+.base__rotulo {
+	font-size:1.2em;
+	font-style:italic;
+}
+
+.base__radio {
+	margin: 0 5px;
+}
+
+.base__radio-label:hover {
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+}
+
+
+/*----------------------*\
+        DISTANCIA
+\*----------------------*/
+
+.distancia {
+	display:none;
+	font-size: 1.1rem;
+	padding: 0.5rem;
+	padding-right: 0;
+	border: 1px solid maroon;
+	border-top:none;
+	background-color: #330000;
+}
+
+
+.distancia__conversao {
+	padding: 0.5rem 0;
+}
+
+.distancia__conversao:last-child {
+	padding-bottom: 0;
+}
+
+
+/*--------------------------*\
+        REGRA DE TRÊS
+\*--------------------------*/
+
+.regra3 {
+	display:none;
+	font-size:1.0rem;
+	padding:0;
+	margin-top: 1.0rem;
+}
+
+
+.regra3__moldura {
+	font-size:1.2em;
+	display: block;
+	border: 2px groove white;
+	margin:0;
+	padding: 0 0 2.0rem 1.0rem;
+
+}
+
+.regra3__moldura-legenda {
+	font-size: 1.4rem;
+	font-style: italic;
+	/* bootstrap põe pra 100% - a linha da moldura não fica perto da legenda */
+	width: auto;
+}
+
+.regra3__paragrafos {
+	/* background-color:navy; */
+	font-size: 1.2rem;
+	padding-right: 0;
+	margin-top: 1.0rem;
+}
+
+.regra3__p {
+	padding:0;
+	margin-right: 0;
+}
+
+.regra3_p0 > span {
+	padding: 0;
+}
+
+.regra3__risco {
+	border: 0;
+	border-bottom: 1px solid ;
+	padding:0;
+	margin: -5px 10px 5px 5px;
+
+}
+
+.regra3__escala {
+	background-color: #222222;
+	color: gold;
+	border: 1px solid #660000;
+	;
+}
+
+.regra3__espacador-vertical {
+	height: 2.0rem;
+
+}
+
+.regra3__x {
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 1.2rem;
+	color: #ffff66;
+}
+
+.regra3__ou {
+	margin: 0.6rem 0 1.2rem 0;
+	padding-left: 6%;
+}
+
+.regra3__divisor {
+
+  height:1.0rem;
+  width: 8.0rem;
+  background-color: transparent;
+  border: 1px solid gold;
+  border-width: 0 0 1px 0;
+  margin-top: 0;
+  display: inline;
+}
+
+.regra3__numerador {
+	margin-left: 11.2rem;
+	width: 8.0rem;
+	margin-bottom: -7px;
+	text-align: center;
+}
+
+.regra3__denominador {
+	margin-left: 11.2rem;
+	width: 8.0rem;
+	margin-top: -0.5rem;
+	text-align: center;
+}
+
+.regra3__traco {
+	margin-left:6.0rem;
+}
+
+.regra3--super sup {
+	font-size: 1.0rem;
+}
+
+.regra3__p--portanto {
+	margin-top:3.0rem;
+	margin-bottom: 1.5rem;
+}
+
+.regra3--espacar {
+	padding: 0 4px;
+}
+
+
+
+

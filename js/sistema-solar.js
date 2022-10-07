@@ -17,26 +17,26 @@
 
 /**
  *   Classe base-mãe Enum que deverá ser extendida a fim de que os objetos da classe filha sejam
- * constantes imutáveis. Está classe, intensionada a ser uma classe abstrata, possui
+ * constantes imutáveis. Está classe, pretendida a ser uma classe abstrata, possui
  * o método de classe (static) #initEnum por onde um vetor de objetos deverá ser
  * passado com todos eles de uma vez.
  *
- *  Depois de pronto, teremos uma vetor imutável com objetos imutáveis.
- *  Para-POO, fica como se fosse atributos membros da classe e não de objetos.
+ *  Depois de pronto, teremos uma vetor imutável de objetos imutáveis.
+ *  A ideia é torná-los como se fossem atributos membros de classe e não de objetos.
  *
  */
 class Enum {
 
   /**
-   * Recebe um conjunto de objetos, os transformam em imutáveis e armazena em um
+   * Recebe uma coleção de objetos, os transformam em objetos imutáveis e armazena em um
    * vetor também imutável.
    */
   static initEnum(objetos) {
     /**
-     *   Primeiramente dexamos a nossa lista de objetos fixa, ninguém entra, ninguém sai,
-     * definindo a propriedade 'valoresEnum' como um vetor imutável.
+     *   Primeiramente dexamos a nossa coleção de objetos fixa, ninguém entra, ninguém sai.
+     * Fazemos isso definindo a propriedade 'valoresEnum' como um vetor imutável.
      *
-     *   Devemos passar todos os objetos ao vetor de uma só vez, porque depois de criado,
+     *   Devemos passar todos os objetos ao vetor(coleção) de uma só vez, porque depois de criado,
      * não será permitdo adicionar novos ou remover existentes (writable:false no []),
      * muito menos tentar alterar o atributo 'writable' da propriedade '[] - vetor', porque
      * estamos fazendo o atributo de propriedade 'configurable' igual a false.

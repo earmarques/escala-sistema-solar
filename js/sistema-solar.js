@@ -927,17 +927,17 @@ function init() {
   // Inicializandos os Enum's
 
   ASTROS.initEnum({
-    SOL:    new Astro('Sol',    1.39e6,  0),
+    SOL:      new Astro('Sol',      1.39e6,    0),
     MERCURIO: new Astro('Mercúrio', 4.879e3,   5.79e7),
     VENUS:    new Astro('Vênus',    1.2104e4,  1.082e8),
     TERRA:    new Astro('Terra',    1.2756e4,  1.496e8),
-    LUA:    new Astro('Lua',    3.475e3,   3.84e5),
+    LUA:      new Astro('Lua',      3.475e3,   3.84e5),
     MARTE:    new Astro('Marte',    6.792e3,   2.279e8),
     JUPITER:  new Astro('Júpiter',  1.42984e5, 7.786e8),
     SATURNO:  new Astro('Saturno',  1.20536e5, 1.4335e9),
     URANO:    new Astro('Urano',    5.1118e4,  2.8725e9),
     NETUNO:   new Astro('Netuno',   4.9528e4,  4.4951e9),
-    PLUTAO:   new Astro('Plutão',   2.39e3,  5.87e9)
+    PLUTAO:   new Astro('Plutão',   2.39e3,    5.87e9)
   });
   CALCULO.initEnum({
     DIAMETRO:  new Calculo("Diâmetro"),

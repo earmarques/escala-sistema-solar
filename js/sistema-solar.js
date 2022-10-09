@@ -75,7 +75,7 @@ class Enum {
 
 
 // ==========================================================================================================
-// Business Logic Concept Object's - BO's -. Astro / Calculo / BaseReferencia -----------------------------
+// Business Logic Concept Object's - BO's -. Astro / Calculo / BaseReferencia -------------------------------
 
 class Astro {
   constructor(nome = "Astro", diametro = 0, distancia = 0) {
@@ -129,11 +129,11 @@ class BaseReferencia {
 }
 
 
-
+// ==========================================================================================================
 // Design Pattern Observer  ---------------------------------------------------------------------------------
 
 
-// |=> Interfaces
+// |=> Interfaces  ------------------------------------------------------------------------------------------
 
 // Subject/Observable Interface
 
@@ -172,12 +172,12 @@ class Observador {
 }
 
 
-// |=> Concrete Classes
+// |=> Concrete Classes  ------------------------------------------------------------------------------------
 
 // Concrete Class Subject/Observable
 
 /**
- *  Encapsulamento dos BO's num envoltório de observável
+ *  Encapsulamento dos Business Objects num envoltório de observável
  * para que seu estado seja monitorado - notify_all.
  *
  */
@@ -571,7 +571,7 @@ class LousaRegra3 extends Observador {
      *   O #update() é chamado pelos próprios Observables BO's, onde
      * planet, calc e bas guardam apenas as suas referências.
      * Porque não há um Observable encapsulando escala,
-     * o método deve ser ser invocado explitamente.
+     * o método deve ser invocado explitamente.
      */
   }
 

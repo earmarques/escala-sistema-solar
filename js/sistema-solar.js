@@ -301,24 +301,24 @@ class LousaRegra3 extends Observador {
    */
   update() {
     for (let i = 0; i < this.observaveis.length; i++) {   // 1.
-
-      let obs = this.observaveis[i];
-
-      switch (obs.getClass()) {
-        case 'AstroObservado':
-          this.planeta = obs.get();
-          break;
-        case 'CalculoObservado':
-          this.calculo = obs.get();
-          break;
-        case 'BaseReferenciaObservada':
-          this.base = obs.get();
-          break;
-      }
-    }
+                                           
+      let obs = this.observaveis[i];       
+                                           
+      switch (obs.getClass()) {            
+        case 'AstroObservado':             
+          this.planeta = obs.get();        
+          break;                                    
+        case 'CalculoObservado':           
+          this.calculo = obs.get();        
+          break;                           
+        case 'BaseReferenciaObservada':    
+          this.base = obs.get();           
+          break;                           
+      }                                    
+    }                                      
     this.apagarLousa();                   // 2.
-    this.carregarMapaCampos();                // 3.
-    this.canetaoEscreva();                  // 4.
+    this.carregarMapaCampos()            // 3.
+    this.canetaoEscreva();              // 4.
   }
 
 

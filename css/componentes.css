@@ -50,7 +50,6 @@
 	font-size: 1rem;
 }
 
-
 .cabecalho__titulo {
 	font-size: 3.5em;
 	/* CUIDADO!! -> quando for borda, padding our margin, o que não for fonte,
@@ -80,7 +79,6 @@
 	font-size: 1rem;
 
 }
-
 
 .dados__sol {
 	font-size: 1.4em;
@@ -183,7 +181,6 @@
 	padding-top:1.7rem;
 }
 
-
 .seletor-calculo__moldura {
 	font-size:1.4em;
 
@@ -219,7 +216,6 @@
 .tipo-calculo {
 	font-size:1rem;
 }
-
 
 .tipo-calculo__opcoes {
 	font-size:1.2em;
@@ -274,7 +270,6 @@
 	background-color: #330000;
 }
 
-
 .diametro__conversao {
 	padding: 0.5rem 0;
 }
@@ -295,7 +290,6 @@
 	background-color: #330000;
 
 }
-
 
 .base__opcoes {
 	font-size:1.1em;
@@ -335,7 +329,6 @@
 	background-color: #330000;
 }
 
-
 .distancia__conversao {
 	padding: 0.5rem 0;
 }
@@ -355,7 +348,6 @@
 	padding:0;
 	margin-top: 1.0rem;
 }
-
 
 .regra3__moldura {
 	font-size:1.2em;

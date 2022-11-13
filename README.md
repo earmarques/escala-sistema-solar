@@ -30,7 +30,6 @@ Podemos identificar na figura abaixo quatro blocos de elementos principais.
 ***OBS.:*** Aqui não será falado sobre a semântica ou da finalidade. Isso está na seção [Para Professores](https://github.com/earmarques/escala-sistema-solar/wiki/Para-Professores#contexto).
 <br>Aqui vamos falar só de elemento html e de seu comportamento.
 
-
 <img src=https://github.com/earmarques/escala-sistema-solar/blob/main/images/devs/projeto.png width=60%><br>_Figura 1: Visão geral_
 
 
@@ -104,7 +103,7 @@ class Enum {
     Object.freeze(this.valoresEnum);
   }
 
-ººº
+...
 
 ```
 
@@ -139,7 +138,7 @@ Depois de pronto, teremos uma vetor imutável de objetos imutáveis. A ideia é 
 ```
 ```js
 
-ººº
+...
 
   static extrairValoresDosObjetos(objetos) {
     for (let chave of Object.keys(objetos)) {
@@ -172,13 +171,13 @@ class Astro {
     this.diametro = diametro;
     this.distancia = distancia;
   }
-ººº
+...
 
 class Calculo {
   constructor(tipo) {
     this.tipo = tipo;
   }
-ººº
+...
 
 class BaseReferencia {
   constructor(descricao, id) {
@@ -219,7 +218,7 @@ function init() {
     DISTANCIA_TERRA_SOL: {descricao: "Distância da Terra ao Sol", id: "base__distancia-terra-sol-label"}
   });
 
-...ººº...
+...
 
 }
 
@@ -236,10 +235,7 @@ CALCULO.DIAMETRO
 
 ```
 
-<br>
-
-[:arrow_up: Ir ao topo](https://github.com/earmarques/escala-sistema-solar/wiki/MODEL:-Domain-as-Enum#modelagem-dos-dados-da-tabela)
-
+---
 
 
 ## Business Objects
@@ -257,7 +253,8 @@ class Astro {
     this.diametro = diametro;
     this.distancia = distancia;
   }
-...ººº...
+...
+
 ```
 
 ```js
@@ -265,7 +262,7 @@ class Calculo {
   constructor(tipo) {
     this.tipo = tipo;
   }
-...ººº...
+...
 ```
 
 ```js
@@ -274,7 +271,7 @@ class BaseReferencia {
     this.descricao = descricao;
     this.id = id;
   }
-...ººº...
+...
 
 ```
 
@@ -333,8 +330,6 @@ O _Observador_ pode estar interessado em mais de um assunto (_subject_), portant
 Na linha indicada #.2 insere o elemento ina pilha(stack). Mais tarde, na linha #.3 o objeto observado chamará o método `#update()` pra dizer que mudou de estado.
 
 
-<hr>
-
 ### Concret Class Observable
 
 Agora vamos as classes concretas de _Observavel_. A lousa da regra de 3 é o painel que preciso atualizar. Seu conteúdo é dependente de 3 objetos e um atributo interno: planeta selecionado(`AstroObservado`), o calculo desejado - se diâmetro  ou distância(`CalculoObservado`), e qual fator de conversão eu vou utilizar na regra de 3 (`BaseReferenciaObservada`).  
@@ -368,8 +363,6 @@ class AstroObservado extends Observavel {
 Notar seu `#set()`, toda vez que é alterado ele invoca o método herdado da classe mãe (`super`) para fazer o broadcast 
 `super.notificarTodosObservadores();`.
 
-
-<hr>
 
 ### Concret Class Observer
 
@@ -428,20 +421,13 @@ que fara em si um 'set' usando um 'get' nos valores recém atualizados.
     this.canetaoEscreva();              // 4.
   }
 
-...ººº...
-
-
+...
 ```
 É isso, qualquer objeto observado que mude de estado, o observado notifica o observador(update) LousaRegra3 que se repinta.
 
 Possui um objeto `canetao` que escreve toda a regra de três na lousa nos eventos set's de atualizações dos objetos do domínio _Observavel_ que este observador monitora (ler código). 
 <br>
 Apaga tudo e reescreve a lousa.
-
-
- 
-
-
 
 ## CONTROLER: Oriented by Function
 
@@ -469,7 +455,7 @@ const BASE = class extends Enum {};
 let linhaSelecionada = null;    // planeta
 let abaSelecionada = null;      // calculo
 
-...ººº...
+...
 
 // Adicionar os objetos vigiados ao observador
   regra3.adicionar(astroSelecionado);

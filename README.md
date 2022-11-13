@@ -14,7 +14,6 @@ Com essa ferramenta podemos trazer o Sol, os planetas e as distâncias orbitais 
 
 A Documentação está dividida em duas seções com focos bem distintos. A Seção [Para Professores](https://github.com/earmarques/escala-sistema-solar/wiki/Para-Professores) é dirigida aos docentes, explicando como utilizar a ferramenta e sugestões de uso com os alunos. Já a outra seção [Para Desenvolvedores](https://github.com/earmarques/escala-sistema-solar/wiki/Para-Desenvolvedores) é para aqueles que querem entender como a ferramenta foi desenvolvida, aos programadores que queiram modificar o sofware e fazer melhorias.
 
----
 
 ### Contexto
 
@@ -24,7 +23,7 @@ Ao invés de fazer um site com várias páginas de algum consultório odontológ
 
 ---
 
-# Apresentação
+## Apresentação
 
 Podemos identificar na figura abaixo quatro blocos de elementos principais.
 
@@ -74,13 +73,11 @@ O único elemento ativo e que reflete alterações somente sobre o próprio bloc
 
 ---
 
-# Modelagem dos dados da tabela
+## Modelagem dos dados da tabela
 
   Os atributos nome, diametro e distância são constantes, então devemos encapsular em uma classe singleto de tipo enum, só há um planeta com propriedades constantes. Mas não há build-in's para enum em Javascript. Foi preciso configurar uma classe para que tivesse a imutabilidade(Enum in JavaScript) e como foi aplicado.
 
-<hr style="width:62.5%">
-
-## Enum in JavaScript
+### Enum in JavaScript
 
   _JavaScript_ possui recursos incríveis como `closure` e a possibilidade de passar função como argumento, 
 mas senti falta de outros, como um suporte nativo a Enum, como tem minha linguagem mãe Java. 
@@ -162,7 +159,7 @@ Depois de pronto, teremos uma vetor imutável de objetos imutáveis. A ideia é 
   }
 
 ```
-<hr style="width:62.5%">
+
 
 ## Aplicando enum no código
 
@@ -245,13 +242,13 @@ CALCULO.DIAMETRO
 
 
 
-# BO's
+## Business Objects
 
  Nós temos três objetos de domínio ou de negócio: `Astro`, `Calculo` e `BaseReferencia`.
 
-<hr>
 
-## POJO
+
+### POJO
 
 ```js
 class Astro {
@@ -281,9 +278,7 @@ class BaseReferencia {
 
 ```
 
-<hr>
-
-## Design Pattern Observer
+### Design Pattern Observer
 
   _Observer_ é um padrão muito elegante. Faz um acoplamento fraco entre objetos. Exemplo: Fazer um cadastro em algum **canal**, site, e receber notificações. O objeto **pessoa** que fez o cadastro está acoplado ao objeto canal, e canal notifica pessoa sobre atualizações.
 
@@ -340,7 +335,7 @@ Na linha indicada #.2 insere o elemento ina pilha(stack). Mais tarde, na linha #
 
 <hr>
 
-## Concret Class Observable
+### Concret Class Observable
 
 Agora vamos as classes concretas de _Observavel_. A lousa da regra de 3 é o painel que preciso atualizar. Seu conteúdo é dependente de 3 objetos e um atributo interno: planeta selecionado(`AstroObservado`), o calculo desejado - se diâmetro  ou distância(`CalculoObservado`), e qual fator de conversão eu vou utilizar na regra de 3 (`BaseReferenciaObservada`).  
  
@@ -376,7 +371,7 @@ Notar seu `#set()`, toda vez que é alterado ele invoca o método herdado da cla
 
 <hr>
 
-## Concret Class Observer
+### Concret Class Observer
 
 ```js
 class LousaRegra3 extends Observador {
@@ -444,9 +439,6 @@ Possui um objeto `canetao` que escreve toda a regra de três na lousa nos evento
 Apaga tudo e reescreve a lousa.
 
 
-<br>
-
-[:arrow_up: Ir ao topo](https://github.com/earmarques/escala-sistema-solar/wiki/MODEL:-Business-Object#bos)
  
 
 
@@ -520,7 +512,7 @@ Há conjuntos de elementos associados que interagem entre si com a finalidade de
 
 O conjunto de práticas a seguir é um maneira de evitar a _guerra do css_. A componentização sugerida pelo BEM isola comportamento e viabiliza reaproveitamento de blocos de marcação html.
 
-##### _Recomendações da metodologia BEM_
+#### _Recomendações da metodologia BEM_
 
 - Cada block é independente e se ajusta responsivamente por serem todos os seus elementos internos com dimensões relativas ao seu container: block.
 

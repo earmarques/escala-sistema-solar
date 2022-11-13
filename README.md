@@ -1,7 +1,5 @@
-# escala-sistema-solar
-Estudo do sistema solar em escala: diâmetro dos planetas e distância orbital
 
-# Bem vindo ao Sistema Solar em Escala.
+# Sistema Solar em Escala.
 
 Esta é uma ferramenta de auxílio a professores e alunos para compreensão das dimensões relativas do tamanho dos planetas em relação ao Sol e da distância orbital dos planetas. 
 
@@ -16,18 +14,17 @@ Com essa ferramenta podemos trazer o Sol, os planetas e as distâncias orbitais 
 
 A Documentação está dividida em duas seções com focos bem distintos. A Seção [Para Professores](https://github.com/earmarques/escala-sistema-solar/wiki/Para-Professores) é dirigida aos docentes, explicando como utilizar a ferramenta e sugestões de uso com os alunos. Já a outra seção [Para Desenvolvedores](https://github.com/earmarques/escala-sistema-solar/wiki/Para-Desenvolvedores) é para aqueles que querem entender como a ferramenta foi desenvolvida, aos programadores que queiram modificar o sofware e fazer melhorias.
 
-## Contexto
+---
+
+### Contexto
 
 Este projeto foi apresentado ao Professor Dr. Lucimar Sasso como trabalho final da disciplina Programação em Microinformática no 1°período do curso Análise e Desenvolvimento de Sistema junto a Fatec de São José do Rio Preto/SP. O professor propós a confecção de um site que envolvesse tudo o que havíamos visto na disciplina: HTML, CSS, Bootstrap, JavaScript e JQuery. 
 
 Ao invés de fazer um site com várias páginas de algum consultório odontológico ou escritório de advocacia, resolvi criar uma única página, mas que fosse rica em JavaScipt e na qual pudesse aplicar as tecnologias que estava estudando. Sou professor de Física e estava na ocasião lecionando Astronomia para minhas turmas do 1°ano do Ensino Médio da escola José Felício Miziara, de São José do Rio Preto/SP. A sequência didática que fiz junto aos alunos pode ser vista na seção [Para Professores](https://github.com/earmarques/escala-sistema-solar/wiki/Para-Professores). 
 
-<br>
+---
 
-[:arrow_up: Ir ao topo](https://github.com/earmarques/escala-sistema-solar/wiki#bem-vindo-ao-sistema-solar-em-escala)
-
-
-## Apresentação
+# Apresentação
 
 Podemos identificar na figura abaixo quatro blocos de elementos principais.
 
@@ -75,9 +72,7 @@ O único elemento ativo e que reflete alterações somente sobre o próprio bloc
 
 <img src=https://github.com/earmarques/escala-sistema-solar/blob/main/images/devs/regra3.png width=50%><br>_Figura 7: Cálculo de proporções_
 
-<br>
-
-[:arrow_up: Ir ao topo](https://github.com/earmarques/escala-sistema-solar/wiki/Over-View)
+---
 
 # Modelagem dos dados da tabela
 
@@ -233,7 +228,7 @@ function init() {
 
 ```
 
-#### Consumindo
+### Consumindo
 
 ```js
 ASTROS.SOL.getDiametroKm()
@@ -507,9 +502,7 @@ Depois o que segue é gestão de estado de objetos baseada em eventos. Algumas f
 
 E uma classe auxiliar, class `Util`.
 
-[:arrow_up: Ir ao topo](https://github.com/earmarques/escala-sistema-solar/wiki/CONTROLER:-Oriented-by-Function#controler-oriented-by-function)
-
-<hr>
+---
 
 ## BEM methodology
 
@@ -529,15 +522,15 @@ O conjunto de práticas a seguir é um maneira de evitar a _guerra do css_. A co
 
 ##### _Recomendações da metodologia BEM_
 
-:izakaya_lantern: Cada block é independente e se ajusta responsivamente por serem todos os seus elementos internos com dimensões relativas ao seu container: block.
+- Cada block é independente e se ajusta responsivamente por serem todos os seus elementos internos com dimensões relativas ao seu container: block.
 
-:izakaya_lantern: Todo bloco é ligado aos seus elementos por '__' - BLOCK__ELEMENT
+- Todo bloco é ligado aos seus elementos por '__' - BLOCK__ELEMENT
 
-:izakaya_lantern: Todo modificador é um alterador do default, ligados por '--' - BLOCK__ELEMENT--MODIFIER.
+- Todo modificador é um alterador do default, ligados por '--' - BLOCK__ELEMENT--MODIFIER.
 
-:izakaya_lantern: Separação de palavras semânticas para variáveis e objetos é por hífen '-' .
+- Separação de palavras semânticas para variáveis e objetos é por hífen '-' .
 
-##### Exemplo: 
+#### Exemplo: 
 BOCK: .seletor-calculo 
 <br>
 BLOCK__ELEMENT: .seletor-calculo__moldura, .seletor-calculo__moldura-legenda

@@ -160,7 +160,7 @@ Depois de pronto, teremos uma vetor imutável de objetos imutáveis. A ideia é 
 ```
 
 
-## Aplicando enum no código
+### Aplicando enum no código
 
 `Astro`, `Calculo` e `BaseReferencia` são os objetos que vamos trancar no método <kbd>#adicionarValorEnum</kbd>. São eles que entrarão no vetor ('[]') do enum.
 

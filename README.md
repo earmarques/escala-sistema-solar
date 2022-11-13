@@ -429,6 +429,8 @@ Possui um objeto `canetao` que escreve toda a regra de três na lousa nos evento
 <br>
 Apaga tudo e reescreve a lousa.
 
+---
+
 ## CONTROLER: Oriented by Function
 
 O controle foi feito com funções. Funções para registrar eventos, exibir e ocultar painel, algums atributos de estado; funções e variáveis globais.

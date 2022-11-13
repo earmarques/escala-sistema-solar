@@ -490,11 +490,11 @@ A VIEW está escrita no arquivo index.html e os css, base.css e componentes.css.
 
 A estruturação de componentes e a estilização foi concebida na metodologia do [BEM](https://en.bem.info/methodology/):
 
- 1. **B** - Block
+ - **B** - Block
 
- 2. **E** - Element
+ - **E** - Element
 
- 3. **M** - Modifier
+ - **M** - Modifier
 
 Há conjuntos de elementos associados que interagem entre si com a finalidade de realizar tarefas com um fim específico. Menus, abas, grupo de botões, são exemplos de elementos que trabalham em conjunto. A esse conjunto denominamos de BLOCK. Os elementos de um menu, p. ex., disparadores de ações, são elementos do BLOCK menu e os botões são os ELEMENT's.
 

@@ -327,7 +327,7 @@ Note que `Observavel` possui um vetor (`[]`), uma coleção de observadores inte
 `#notificarTodosObservadores()` corre a coleção de observadores e invoca o método `#update()` dentro de _Observador_ para informar que houve alterações e este corrija seu estado.
 
 O _Observador_ pode estar interessado em mais de um assunto (_subject_), portanto, os objetos de interesse estão numa coleção - `observaveis = []`. Quando adicionar algum objeto de interresse, ele se cadastra pedindo ao _Observavel_ para lhe cadastrar(#.1).
-Na linha indicada #.2 insere o elemento ina pilha(stack). Mais tarde, na linha #.3 o objeto observado chamará o método `#update()` pra dizer que mudou de estado.
+Na linha indicada #.2 insere o elemento na pilha(stack). Mais tarde, na linha #.3 o objeto observado chamará o método `#update()` pra dizer que mudou de estado.
 
 
 ### Concret Class Observable

@@ -383,7 +383,7 @@ em que fica montada o cálculo de proporções da regra de três.
   Esta classe guarda uma cópia das variáveis de aplicação que guardam os estados
 da máquina: {planeta, calculo, base-referencia}.
 Suas referências estão sempre atualizada por estar monitorando cada alteração
-na variáveis de negócio. 
+nas variáveis de negócio. 
 
 Sua única porta de alteração no valor informa ao observador,
 pela referência interna de acoplamento, invocando <code>Observador#update()</code>,

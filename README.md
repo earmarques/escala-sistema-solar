@@ -109,7 +109,7 @@ class Enum {
 
 Por fim congelamos a própria coleção com `Object.freeze()`, não permitindo que novos objetos ou propriedades sejam adicionados a coleção, e previne que algum objetos seja removido ou alterado.  
 
-A classe mãe (abstract_inJS?) `Enum` deverá ser extendida a fim de que os objetos da classe filha sejam constantes imutáveis. Está classe, pretendida a ser uma classe abstrata, possui o método de classe (static) `#initEnum()` por onde um vetor de objetos deverá ser passado com todos de uma vez - não é permitido adicionar ou remover objetos depois(imutable).
+A classe mãe (abstract_inJS?) `Enum` deverá ser extendida a fim de que os objetos da classe filha sejam constantes imutáveis. Está clas￼se, pretendida a ser uma classe abstrata, possui o método de classe (static) `#initEnum()` por onde um vetor de objetos deverá ser passado com todos de uma vez - não é permitido adicionar ou remover objetos depois(imutable).
 Depois de pronto, teremos uma vetor imutável de objetos imutáveis. A ideia é torná-los como se fossem atributos membros de classe e não de objetos.
 
 ```js
@@ -196,7 +196,7 @@ function init() {
 
   // Inicializandos os Enum's
 
-  ASTROS.initEnum({
+  ASTROS.initEnum({￼
     SOL:      new Astro('Sol',      1.39e6,    0),
     MERCURIO: new Astro('Mercúrio', 4.879e3,   5.79e7),
     VENUS:    new Astro('Vênus',    1.2104e4,  1.082e8),
@@ -233,7 +233,7 @@ BASE.DISTANCIA_TERRA_SOL
 CALCULO.DISTANCIA
 CALCULO.DIAMETRO
 
-```
+```￼
 
 ---
 
@@ -423,7 +423,7 @@ que fara em si um 'set' usando um 'get' nos valores recém atualizados.
 
 ...
 ```
-É isso, qualquer objeto observado que mude de estado, o observado notifica o observador(update) LousaRegra3 que se repinta.
+É isso, qualquer objeto observado que mude de estado, o observado notifica o observador('#update') LousaRegra3 que se repinte.
 
 Possui um objeto `canetao` que escreve toda a regra de três na lousa nos eventos set's de atualizações dos objetos do domínio _Observavel_ que este observador monitora (ler código). 
 <br>

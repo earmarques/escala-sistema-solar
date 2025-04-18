@@ -33,7 +33,7 @@ class Enum {
    */
   static initEnum(objetos) {
     /**
-     *   Primeiramente dexamos a nossa coleção de objetos fixa, ninguém entra, ninguém sai.
+     *   Primeiramente deixamos a nossa coleção de objetos fixa, ninguém entra, ninguém sai.
      * Fazemos isso definindo a propriedade 'valoresEnum' como um vetor imutável.
      *
      *   Devemos passar todos os objetos ao vetor(coleção) de uma só vez, porque depois de criado,
